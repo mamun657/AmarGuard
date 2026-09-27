@@ -29,11 +29,28 @@ android {
         versionName = flutter.versionName
     }
 
+    val releaseKeystore = System.getenv("AMARGUARD_RELEASE_KEYSTORE")
+    val releaseStorePassword = System.getenv("AMARGUARD_RELEASE_STORE_PASSWORD")
+    val releaseKeyAlias = System.getenv("AMARGUARD_RELEASE_KEY_ALIAS")
+    val releaseKeyPassword = System.getenv("AMARGUARD_RELEASE_KEY_PASSWORD")
+
+    if (releaseKeystore != null && releaseStorePassword != null &&
+        releaseKeyAlias != null && releaseKeyPassword != null
+    ) {
+        signingConfigs.create("amarguardRelease") {
+            storeFile = file(releaseKeystore)
+            storePassword = releaseStorePassword
+            keyAlias = releaseKeyAlias
+            keyPassword = releaseKeyPassword
+        }
+    }
+
     buildTypes {
         release {
-            // Signing with debug keys for now.
-            // Later we will configure proper release signing.
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.findByName("amarguardRelease")
+                ?: throw GradleException(
+                    "Release signing is not configured. Set the AMARGUARD_RELEASE_* environment variables."
+                )
         }
     }
 }
