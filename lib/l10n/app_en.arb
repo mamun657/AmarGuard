@@ -1,0 +1,198 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "AmarGuard",
+
+  "brandTagline": "UNDERSTAND BEFORE YOU TRUST.",
+  "@brandTagline": {
+    "description": "Brand tagline displayed in caps"
+  },
+
+  "splashCredit": "by BinaryPulse",
+
+  "onboardingTitle1": "Stay safer in every\ndigital interaction.",
+  "@onboardingTitle1": {
+    "description": "Onboarding page 1 title"
+  },
+  "onboardingSubtitle1": "Detect, understand and respond to risky\ncalls, messages, links and screenshots.",
+  "@onboardingSubtitle1": {
+    "description": "Onboarding page 1 subtitle"
+  },
+
+  "onboardingTitle2": "Scams don't always\nstart with a link.",
+  "@onboardingTitle2": {
+    "description": "Onboarding page 2 title"
+  },
+  "onboardingSubtitle2": "Sometimes, they start with\na conversation.",
+  "@onboardingSubtitle2": {
+    "description": "Onboarding page 2 subtitle"
+  },
+
+  "onboardingTitle3": "Know why something\nfeels risky.",
+  "@onboardingTitle3": {
+    "description": "Onboarding page 3 title"
+  },
+  "onboardingSubtitle3": "AI analyzes the whole interaction\nand explains the risk.",
+  "@onboardingSubtitle3": {
+    "description": "Onboarding page 3 subtitle"
+  },
+
+  "onboardingNext": "Next",
+  "onboardingSkip": "Skip",
+  "onboardingGetStarted": "Get Started",
+
+  "scamBubble1": "You've been selected\nfor a special offer!",
+  "@scamBubble1": {
+    "description": "Sample scam chat bubble 1"
+  },
+  "scamBubble2": "Pay now to confirm.",
+  "scamBubble3": "Don't tell anyone.",
+  "scamBubble4": "Share your OTP.",
+
+  "pipelineStep1Title": "Conversation",
+  "pipelineStep1Subtitle": "Voice to Text",
+  "pipelineStep2Title": "Context Analysis",
+  "pipelineStep2Subtitle": "Find risk signals",
+  "pipelineStep3Title": "AI Risk Detection",
+  "pipelineStep3Subtitle": "XGBoost + SHAP",
+  "pipelineStep4Title": "Clear Explanation",
+  "pipelineStep4Subtitle": "Why is it risky?",
+
+  "loginWelcome": "Welcome Back",
+  "loginSubtitle": "Log in to keep a safer digital life.",
+  "loginEmailHint": "Email Address",
+  "loginPasswordHint": "Password",
+  "loginKeepMe": "Keep me signed in",
+  "loginForgot": "Forgot Password?",
+  "loginButton": "Log In",
+  "loginContinueAs": "or continue as",
+  "loginGuest": "Continue as Guest",
+  "loginNoAccount": "Don't have an account? ",
+  "loginSignUp": "Sign Up",
+
+  "signupTitle": "Create Your\nSafety Account",
+  "signupSubtitle": "Join AmarGuard and stay protected.",
+  "signupNameHint": "Full Name",
+  "signupEmailHint": "Email Address",
+  "signupPhoneHint": "Phone Number",
+  "signupPasswordHint": "Password",
+  "signupConfirmHint": "Confirm Password",
+  "signupAgreePrefix": "I agree to the ",
+  "signupAgreePrivacy": "Privacy Policy",
+  "signupAgreeAnd": " and ",
+  "signupAgreeTerms": "Terms.",
+  "signupAgreeSuffix": "",
+  "signupButton": "Create Account",
+  "signupHaveAccount": "Already have an account? ",
+  "signupLogIn": "Log In",
+
+  "errorEmailRequired": "Please enter your email.",
+  "errorEmailInvalid": "Please enter a valid email address.",
+  "errorPasswordRequired": "Please enter your password.",
+  "errorPasswordShort": "Password must be at least 6 characters.",
+  "errorNameRequired": "Please enter your full name.",
+  "errorPhoneRequired": "Please enter your phone number.",
+  "errorPhoneInvalid": "Please enter a valid phone number.",
+  "errorConfirmRequired": "Please confirm your password.",
+  "errorConfirmMismatch": "Passwords do not match.",
+  "errorAgreeTerms": "Please agree to the Terms to continue.",
+  "errorGeneric": "Something went wrong. Please try again.",
+  "errorInvalidCredentials": "Email or password is incorrect.",
+  "errorAccountDisabled": "This account has been disabled.",
+  "errorTooManyAttempts": "Too many attempts. Please try again later.",
+  "errorNoInternet": "Please check your internet connection and try again.",
+  "errorAccountExists": "An account with this email already exists.",
+  "errorWeakPassword": "Please choose a stronger password.",
+  "errorSignupUnavailable": "Account creation is currently unavailable.",
+
+  "greetingMorning": "Good morning,",
+  "greetingAfternoon": "Good afternoon,",
+  "greetingEvening": "Good evening,",
+  "safetyActive": "Your digital safety is active.",
+  "protectedTitle": "You're Protected",
+  "protectedBody": "AmarGuard is ready to help you check suspicious interactions.",
+
+  "quickActions": "Quick Actions",
+  "seeAll": "See All",
+
+  "serviceAnalyzeCallTitle": "Analyze Call",
+  "serviceAnalyzeCallDesc": "Detect scam & fraud",
+  "serviceCheckMessageTitle": "Check Message",
+  "serviceCheckMessageDesc": "Scan suspicious text",
+  "serviceCheckLinkTitle": "Check Link",
+  "serviceCheckLinkDesc": "Find unsafe websites",
+  "serviceScanScreenshotTitle": "Scan Screenshot",
+  "serviceScanScreenshotDesc": "Identify scams in images",
+  "serviceAnalyzeAudioTitle": "Analyze Audio",
+  "serviceAnalyzeAudioDesc": "Detect voice scams",
+  "serviceFamilySafetyTitle": "Family Safety",
+  "serviceFamilySafetyDesc": "Trusted contacts & safety",
+
+  "stayAlertTitle": "Stay Alert!",
+  "stayAlertBody": "Scams can happen in calls, messages, links and more.",
+
+  "recentActivity": "Recent Activity",
+  "riskHigh": "High Risk",
+  "riskMedium": "Medium Risk",
+  "riskLow": "Low Risk",
+
+  "activityCallTitle": "Unknown Call",
+  "activityScreenshotTitle": "Screenshot Analysis",
+  "activityLinkTitle": "Suspicious Link",
+
+  "navHome": "Home",
+  "navProtect": "Protect",
+  "navAnalyze": "Analyze",
+  "navHistory": "History",
+  "navProfile": "Profile",
+
+  "protectTitle": "Protect",
+  "protectTagline": "Manage how AmarGuard keeps you safe across every interaction.",
+  "analyzeTitle": "Analyze",
+  "analyzeTagline": "Run a quick safety check on any call, message, link or file.",
+  "historyTitle": "History",
+  "historyTagline": "Review the analyses you have run and what AmarGuard found.",
+  "profileTitle": "Profile",
+  "profileTagline": "Your account and AmarGuard preferences.",
+
+  "profileGuestBadge": "Browsing as guest",
+  "profileActiveProtection": "Active Protection",
+  "profileActiveProtectionGuest": "Limited in guest mode",
+  "profileActiveProtectionUser": "Enabled across your account",
+  "profileActivityHistory": "Activity History",
+  "profileActivityHistorySubtitle": "View recent analysis results",
+  "profileHelp": "Help & Support",
+  "profileHelpSubtitle": "Get answers about AmarGuard",
+  "profileSignOut": "Sign Out",
+  "profileSignedOut": "Signed out",
+
+  "settingsLanguage": "Language",
+  "settingsLanguageEnglish": "English",
+  "settingsLanguageBangla": "বাংলা",
+  "settingsLanguageSubtitle": "Choose your preferred app language",
+
+  "placeholderSoonTitle": "Coming together soon",
+  "placeholderSoonBody": "This section is part of the AmarGuard roadmap and will be enabled once the next release is ready.",
+  "placeholderNotifyTitle": "We'll let you know",
+  "placeholderNotifyBody": "You will see updates here as soon as new protection features become available for your account.",
+
+  "maintenanceTitle": "System Maintenance",
+  "maintenanceBody": "{service} is temporarily unavailable while we complete system maintenance. Please try again later.",
+  "@maintenanceBody": {
+    "placeholders": {
+      "service": {
+        "type": "String"
+      }
+    }
+  },
+  "maintenancePreparing": "We're preparing this feature for a future release.",
+  "maintenanceGotIt": "Got it",
+
+  "snackMenuTitle": "Menu",
+  "snackMenuBody": "The side menu is being prepared for the next AmarGuard release.",
+  "snackNotificationsTitle": "Notifications",
+  "snackNotificationsBody": "You have no new safety alerts right now.",
+
+  "firebaseUnavailableTitle": "Firebase unavailable",
+  "firebaseUnavailableFallback": "AmarGuard could not start. Please try again."
+}

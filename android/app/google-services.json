@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "994231389706",
+    "project_id": "guard-ab0d3",
+    "storage_bucket": "guard-ab0d3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994231389706:android:3b84631c845d688eba59f3",
+        "android_client_info": {
+          "package_name": "com.binarypulse.amarguard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqfW0I5tS6g9031TIQlu2P3qA9dDbKBoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
