@@ -24,8 +24,8 @@
 
 <p align="center">
 
-<a href="https://github.com/mamun657/AmarGuard/releases/latest">
-<img src="https://img.shields.io/badge/Download%20AmarGuard%20APK-2EA44F?style=for-the-badge&logo=android&logoColor=white">
+<a href="https://github.com/mamun657/AmarGuard/releases/download/v1.0.0/AmarGuard.apk">
+  Download AmarGuard APK
 </a>
 
 </p>
