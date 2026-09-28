@@ -24,15 +24,12 @@
 
 <p align="center">
 
-<a href="https://github.com/mamun657/AmarGuard/releases/download/v1.0.0/AmarGuard.apk">
-  Download AmarGuard APK
+<a href="https://github.com/mamun657/AmarGuard/releases/download/v1.0.0/AmarGuard.apk">   Download AmarGuard APK
+
 </a>
 
 </p>
 
-**Latest Android APK:** [Download AmarGuard](../../releases/latest)
-
-> Download the APK and install it on an Android device.
 
 ---
 
