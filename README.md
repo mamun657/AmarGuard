@@ -791,51 +791,6 @@ For a specific device:
 ```bash
 flutter run -d <device-id>
 ```
-
----
-
-# 📦 Build Android APK
-
-```bash
-flutter build apk --release
-```
-
-The generated APK will normally be available under:
-
-```text
-build/app/outputs/flutter-apk/
-```
-
----
-
-# 📥 Install APK with ADB
-
-Connect an Android device and verify:
-
-```bash
-adb devices
-```
-
-Then:
-
-```bash
-adb install path/to/AmarGuard.apk
-```
-
----
-
-# 🧩 Firebase Configuration
-
-Important Firebase configuration files include:
-
-```text
-firebase.json
-firebase_options.dart
-android/app/google-services.json
-```
-
-Never commit private credentials, passwords, private keys, or other secrets to the repository.
-
 ---
 
 # 🌐 Localization
@@ -884,21 +839,7 @@ EXPLAIN
 PROTECT
 ```
 
-The objective is not simply to tell users:
-
-> **"This is dangerous."**
-
-The objective is to help users understand:
-
-> **"Why does this interaction feel risky, and what should I consider before responding?"**
-
----
-
-# 🤝 Team
-
-## BinaryPulse
-
-AmarGuard is developed by **Team BinaryPulse**.
+# AmarGuard is developed by **Mohammed Minul Islam**.
 
 The project focuses on practical AI-powered digital safety tools with particular attention to:
 
@@ -927,45 +868,3 @@ If you find AmarGuard useful:
 * 💡 Suggest improvements
 * 🤝 Contribute to the project
 
----
-
-<p align="center">
-
-# 🛡️ AmarGuard
-
-### UNDERSTAND BEFORE YOU TRUST.
-
-**Built by BinaryPulse**
-
-</p>
-
----
-
-# 📁 Screenshot Folder Structure
-
-Your GitHub repository should contain the following structure:
-
-```text
-AmarGuard/
-│
-├── lib/
-├── android/
-├── assets/
-│
-├── docs/
-│   └── screenshots/
-│       ├── onboarding-01.png
-│       ├── onboarding-02.png
-│       ├── onboarding-03.png
-│       ├── login.png
-│       ├── signup.png
-│       ├── dashboard-en.png
-│       ├── dashboard-bn.png
-│       ├── profile-en.png
-│       ├── language.png
-│       └── profile-bn.png
-│
-├── README.md
-├── pubspec.yaml
-└── ...
-```
