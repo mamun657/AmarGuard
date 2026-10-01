@@ -549,20 +549,20 @@ A Neo4j-based knowledge graph can be used to represent relationships between thr
 # 📱 App Screenshots
 
 ## Onboarding
+
+
 <p align="center">
-  <img width="30%" alt="AmarGuard Onboarding 1" src="https://github.com/user-attachments/assets/3dc9974e-5e5b-49c4-bda0-bcb83c98aaed" />
-  <img width="30%" alt="AmarGuard Onboarding 2" src="https://github.com/user-attachments/assets/97b45f22-d8cb-47cd-bf95-8e927f086e26" />
-  <img width="30%" alt="AmarGuard Onboarding 3" src="https://github.com/user-attachments/assets/0d06daff-f729-4507-a1c2-8e3fb02d3391" />
+  <img width="200" height="430" alt="AmarGuard Onboarding 1" src="https://github.com/user-attachments/assets/3dc9974e-5e5b-49c4-bda0-bcb83c98aaed" />
+  <img width="200" height="430" alt="AmarGuard Onboarding 2" src="https://github.com/user-attachments/assets/97b45f22-d8cb-47cd-bf95-8e927f086e26" />
+  <img width="200" height="430" alt="AmarGuard Onboarding 3" src="https://github.com/user-attachments/assets/0d06daff-f729-4507-a1c2-8e3fb02d3391" />
 </p>
 
 ---
-
 ## Authentication
 
 <p align="center">
-<img width="336" height="726" alt="image" src="https://github.com/user-attachments/assets/cf40fdbc-1283-4e91-ab13-7f7067755c1c" />
-<img width="338" height="696" alt="image" src="https://github.com/user-attachments/assets/dee584bd-b0be-4cf3-b21a-03393f8b07af" />
-
+  <img width="300" height="650" alt="AmarGuard Login" src="https://github.com/user-attachments/assets/cf40fdbc-1283-4e91-ab13-7f7067755c1c" />
+  <img width="300" height="650" alt="AmarGuard Register" src="https://github.com/user-attachments/assets/dee584bd-b0be-4cf3-b21a-03393f8b07af" />
 </p>
 
 ---
@@ -570,9 +570,8 @@ A Neo4j-based knowledge graph can be used to represent relationships between thr
 ## Dashboard
 
 <p align="center">
-<img width="339" height="729" alt="image" src="https://github.com/user-attachments/assets/2d2ddb6f-d36d-4d43-9a0f-75ade9ead2bb" />
-<img width="332" height="705" alt="image" src="https://github.com/user-attachments/assets/7a541bb0-79ec-47bc-9a35-bc89723d2067" />
-
+  <img width="300" height="650" alt="AmarGuard Dashboard 1" src="https://github.com/user-attachments/assets/2d2ddb6f-d36d-4d43-9a0f-75ade9ead2bb" />
+  <img width="300" height="650" alt="AmarGuard Dashboard 2" src="https://github.com/user-attachments/assets/7a541bb0-79ec-47bc-9a35-bc89723d2067" />
 </p>
 
 ---
@@ -580,9 +579,8 @@ A Neo4j-based knowledge graph can be used to represent relationships between thr
 ## Profile & Language
 
 <p align="center">
- <img width="337" height="722" alt="image" src="https://github.com/user-attachments/assets/030de9c2-d955-4183-96dc-6c28130d5cd8" />
-<img width="354" height="714" alt="image" src="https://github.com/user-attachments/assets/2e4cd5ab-e7cf-4cd7-ad62-aca86904e793" />
-
+  <img width="300" height="650" alt="AmarGuard Profile" src="https://github.com/user-attachments/assets/030de9c2-d955-4183-96dc-6c28130d5cd8" />
+  <img width="300" height="650" alt="AmarGuard Language" src="https://github.com/user-attachments/assets/2e4cd5ab-e7cf-4cd7-ad62-aca86904e793" />
 </p>
 
 ---
