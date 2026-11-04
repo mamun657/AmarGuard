@@ -1,0 +1,75 @@
+name: amarguard
+description: "AmarGuard - AI Digital Safety Guardian"
+publish_to: 'none' 
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.13.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+  firebase_core: ^4.15.0
+  firebase_auth: ^6.7.0
+  cloud_firestore: ^6.10.0
+  shared_preferences: ^2.5.5
+  intl: any
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
+  geolocator: ^14.1.2
+  geocoding: ^5.0.0
+  battery_plus: ^7.1.2
+  share_plus: ^13.3.1
+  app_links: ^7.2.2
+  record: ^7.1.2
+  http: ^1.6.0
+  url_launcher: ^6.3.3
+  firebase_messaging: ^16.7.1
+  flutter_local_notifications: ^22.3.3
+  lottie: ^3.3.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+  flutter_launcher_icons: ^0.14.4
+
+flutter:
+  generate: true
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/icons/analyze_call.png
+    - assets/icons/check_message.png
+    - assets/icons/check_link.png
+    - assets/icons/scan_screenshot.png
+    - assets/icons/analyze_audio.png
+    - assets/icons/family_safety.png
+    - assets/icons/family_safety_action.png
+    - assets/icons/care_signal_action.png
+    - assets/icons/silent_speak_action.png
+    - assets/images/img1.png
+    - assets/images/img2.png
+    - assets/images/onb1.png
+    - assets/images/onb3.png
+    - assets/images/loading.json
+    - assets/images/Chatbot animation.json
+
+  fonts:
+    - family: NotoSansBengali
+      fonts:
+        - asset: assets/fonts/NotoSansBengali-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/NotoSansBengali-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/NotoSansBengali-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/NotoSansBengali-Bold.ttf
+          weight: 700

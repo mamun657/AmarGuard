@@ -1,0 +1,569 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function devicePath(ownerUid, deviceId) {
+      return /databases/$(database)/documents/users/$(ownerUid)/devices/$(deviceId);
+    }
+
+    function invitationPath(invitationId) {
+      return /databases/$(database)/documents/familyInvitations/$(invitationId);
+    }
+
+    function requestPath(invitationId, viewerUid) {
+      return /databases/$(database)/documents/familyInvitations/$(invitationId)/requests/$(viewerUid);
+    }
+
+    function approvedViewerPath(ownerUid, deviceId, viewerUid) {
+      return /databases/$(database)/documents/users/$(ownerUid)/devices/$(deviceId)/approvedViewers/$(viewerUid);
+    }
+
+    function approvedViewer(ownerUid, deviceId, viewerUid) {
+      return signedIn()
+        && request.auth.uid == viewerUid
+        && exists(approvedViewerPath(ownerUid, deviceId, viewerUid))
+        && get(approvedViewerPath(ownerUid, deviceId, viewerUid)).data.ownerUid == ownerUid
+        && get(approvedViewerPath(ownerUid, deviceId, viewerUid)).data.deviceId == deviceId
+        && get(approvedViewerPath(ownerUid, deviceId, viewerUid)).data.viewerUid == viewerUid
+        && get(approvedViewerPath(ownerUid, deviceId, viewerUid)).data.active == true;
+    }
+
+    function viewerIndexPath(viewerUid, grantId) {
+      return /databases/$(database)/documents/familyViewerAccess/$(viewerUid)/grants/$(grantId);
+    }
+
+    function validInvitation(invitationId, ownerUid, deviceId) {
+      return exists(invitationPath(invitationId))
+        && get(invitationPath(invitationId)).data.ownerUid == ownerUid
+        && get(invitationPath(invitationId)).data.deviceId == deviceId
+        && get(invitationPath(invitationId)).data.status == 'open'
+        && get(invitationPath(invitationId)).data.expiresAt is timestamp
+        && get(invitationPath(invitationId)).data.expiresAt > request.time;
+    }
+
+    function activeGrant(ownerUid, deviceId, viewerUid) {
+      return approvedViewer(ownerUid, deviceId, viewerUid)
+        && exists(devicePath(ownerUid, deviceId))
+        && get(devicePath(ownerUid, deviceId)).data.ownerUid == ownerUid
+        && get(devicePath(ownerUid, deviceId)).data.deviceId == deviceId
+        && get(devicePath(ownerUid, deviceId)).data.sharingState in ['active', 'paused'];
+    }
+
+    function validProfileCreate() {
+      return request.resource.data.keys().hasOnly([
+          'displayName', 'email', 'phoneNumber', 'authProvider',
+          'createdAt', 'updatedAt'
+        ])
+        && request.resource.data.displayName is string
+        && request.resource.data.email is string
+        && request.resource.data.phoneNumber is string
+        && request.resource.data.authProvider == 'email'
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.updatedAt is timestamp;
+    }
+
+    function validDeviceIdentity(ownerUid, deviceId) {
+      return request.resource.data.ownerUid == ownerUid
+        && request.resource.data.deviceId == deviceId
+        && request.resource.data.ownerUid is string
+        && request.resource.data.deviceId is string;
+    }
+
+    function safeDeviceMetadata(ownerUid, deviceId) {
+      return resource.data.keys().hasOnly([
+          'ownerUid', 'deviceId', 'nickname', 'sharingState',
+          'createdAt', 'updatedAt'
+        ])
+        && resource.data.ownerUid == ownerUid
+        && resource.data.deviceId == deviceId;
+    }
+
+    match /users/{ownerUid} {
+      allow read: if isOwner(ownerUid);
+      allow create: if isOwner(ownerUid)
+        && validProfileCreate();
+      allow update: if isOwner(ownerUid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'displayName', 'email', 'phoneNumber', 'updatedAt'
+        ])
+        && request.resource.data.displayName is string
+        && request.resource.data.email is string
+        && request.resource.data.phoneNumber is string
+        && request.resource.data.updatedAt is timestamp;
+      allow delete: if false;
+
+      match /devices/{deviceId} {
+        allow create: if isOwner(ownerUid)
+          && request.resource.data.keys().hasOnly([
+            'ownerUid', 'deviceId', 'nickname', 'sharingState',
+            'createdAt', 'updatedAt'
+          ])
+          && validDeviceIdentity(ownerUid, deviceId)
+          && request.resource.data.nickname is string
+          && request.resource.data.sharingState in [
+            'active', 'paused', 'stopped', 'notConfigured', 'permissionDisabled'
+          ]
+          && request.resource.data.createdAt is timestamp
+          && request.resource.data.updatedAt is timestamp;
+        allow read: if isOwner(ownerUid)
+          || (approvedViewer(ownerUid, deviceId, request.auth.uid)
+            && safeDeviceMetadata(ownerUid, deviceId));
+        allow update: if isOwner(ownerUid)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'nickname', 'sharingState', 'updatedAt'
+          ])
+          && request.resource.data.ownerUid == resource.data.ownerUid
+          && request.resource.data.deviceId == resource.data.deviceId
+          && request.resource.data.nickname is string
+          && request.resource.data.sharingState in [
+            'active', 'paused', 'stopped', 'notConfigured', 'permissionDisabled'
+          ]
+          && request.resource.data.updatedAt is timestamp;
+        allow delete: if isOwner(ownerUid);
+
+        match /status/{statusId} {
+          allow read: if isOwner(ownerUid)
+            || activeGrant(ownerUid, deviceId, request.auth.uid);
+          allow create: if isOwner(ownerUid)
+            && statusId == 'current'
+            && request.resource.data.sharingState
+              == get(devicePath(ownerUid, deviceId)).data.sharingState
+            && request.resource.data.sharingState in [
+              'active', 'paused', 'stopped', 'notConfigured', 'permissionDisabled'
+            ]
+            && request.resource.data.permissionState is string;
+          allow update: if isOwner(ownerUid)
+            && statusId == 'current'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'sharingState', 'lastHeartbeat', 'lastSuccessfulUpload',
+              'permissionState', 'batteryLevel', 'isCharging',
+              'batteryObservedAt'
+            ])
+            && request.resource.data.sharingState
+              == get(devicePath(ownerUid, deviceId)).data.sharingState
+            && request.resource.data.sharingState in [
+              'active', 'paused', 'stopped', 'notConfigured', 'permissionDisabled'
+            ]
+            && request.resource.data.permissionState is string;
+          allow delete: if isOwner(ownerUid);
+        }
+
+        match /location/{locationId} {
+          allow read: if isOwner(ownerUid)
+            || activeGrant(ownerUid, deviceId, request.auth.uid);
+          allow create: if isOwner(ownerUid)
+            && locationId == 'current'
+            && get(devicePath(ownerUid, deviceId)).data.sharingState == 'active'
+            && request.resource.data.keys().hasOnly([
+              'ownerUid', 'deviceId', 'latitude', 'longitude', 'accuracy',
+              'capturedAt', 'syncedAt', 'batteryLevel', 'isCharging',
+              'sharingSessionId', 'addressLabel'
+            ])
+            && validDeviceIdentity(ownerUid, deviceId)
+            && request.resource.data.latitude is number
+            && request.resource.data.longitude is number
+            && request.resource.data.latitude >= -90
+            && request.resource.data.latitude <= 90
+            && request.resource.data.longitude >= -180
+            && request.resource.data.longitude <= 180
+            && request.resource.data.accuracy is number
+            && request.resource.data.accuracy >= 0
+            && request.resource.data.accuracy <= 100000
+            && request.resource.data.capturedAt is timestamp
+            && request.resource.data.syncedAt is timestamp
+            && request.resource.data.sharingSessionId is string
+            && request.resource.data.sharingSessionId.size() > 0;
+          allow update: if isOwner(ownerUid)
+            && locationId == 'current'
+            && get(devicePath(ownerUid, deviceId)).data.sharingState == 'active'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'ownerUid', 'deviceId', 'latitude', 'longitude', 'accuracy',
+              'capturedAt', 'syncedAt', 'batteryLevel', 'isCharging',
+              'sharingSessionId', 'addressLabel'
+            ])
+            && validDeviceIdentity(ownerUid, deviceId)
+            && request.resource.data.ownerUid == resource.data.ownerUid
+            && request.resource.data.deviceId == resource.data.deviceId
+            && request.resource.data.capturedAt is timestamp
+            && resource.data.capturedAt is timestamp
+            && request.resource.data.capturedAt > resource.data.capturedAt
+            && request.resource.data.latitude is number
+            && request.resource.data.longitude is number
+            && request.resource.data.latitude >= -90
+            && request.resource.data.latitude <= 90
+            && request.resource.data.longitude >= -180
+            && request.resource.data.longitude <= 180
+            && request.resource.data.accuracy is number
+            && request.resource.data.accuracy >= 0
+            && request.resource.data.accuracy <= 100000
+            && request.resource.data.syncedAt is timestamp
+            && request.resource.data.sharingSessionId is string
+            && request.resource.data.sharingSessionId.size() > 0;
+          allow delete: if isOwner(ownerUid);
+        }
+
+        match /approvedViewers/{viewerUid} {
+          allow read: if isOwner(ownerUid)
+            || (signedIn() && request.auth.uid == viewerUid);
+          allow create: if isOwner(ownerUid)
+            && request.resource.data.keys().hasOnly([
+              'viewerUid', 'ownerUid', 'deviceId', 'invitationId', 'active', 'relationship',
+              'viewerDisplayName', 'viewerEmail', 'grantedAt'
+            ])
+            && request.resource.data.viewerUid == viewerUid
+            && request.resource.data.ownerUid == ownerUid
+            && request.resource.data.deviceId == deviceId
+            && request.resource.data.invitationId is string
+            && request.resource.data.active == true
+            && request.resource.data.relationship is string
+            && request.resource.data.grantedAt is timestamp
+            && exists(requestPath(request.resource.data.invitationId, viewerUid))
+            && get(requestPath(
+              request.resource.data.invitationId,
+              viewerUid
+            )).data.status in ['pending', 'approved']
+            && get(requestPath(
+              request.resource.data.invitationId,
+              viewerUid
+            )).data.ownerUid == ownerUid
+            && get(requestPath(
+              request.resource.data.invitationId,
+              viewerUid
+            )).data.viewerUid == viewerUid;
+          allow update: if isOwner(ownerUid)
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'active'
+            ])
+            && request.resource.data.viewerUid == resource.data.viewerUid
+            && request.resource.data.ownerUid == resource.data.ownerUid
+            && request.resource.data.deviceId == resource.data.deviceId
+            && request.resource.data.active is bool;
+          allow delete: if isOwner(ownerUid)
+            || (signedIn() && request.auth.uid == viewerUid);
+        }
+
+        match /incomingRequests/{viewerUid} {
+          allow get: if isOwner(ownerUid)
+            || (signedIn() && request.auth.uid == viewerUid);
+          allow list: if isOwner(ownerUid);
+          allow create: if signedIn()
+            && request.auth.uid == viewerUid
+            && request.auth.uid != ownerUid
+            && request.resource.data.keys().hasOnly([
+              'viewerUid', 'ownerUid', 'deviceId', 'invitationId',
+              'viewerDisplayName', 'viewerEmail', 'relationship',
+              'requestedCapabilities', 'status', 'requestedAt'
+            ])
+            && request.resource.data.viewerUid == viewerUid
+            && request.resource.data.ownerUid == ownerUid
+            && request.resource.data.deviceId == deviceId
+            && request.resource.data.status == 'pending'
+            && request.resource.data.requestedAt is timestamp
+            && validInvitation(
+              request.resource.data.invitationId,
+              ownerUid,
+              deviceId
+            )
+            && getAfter(requestPath(
+              request.resource.data.invitationId,
+              viewerUid
+            )).data.status == 'pending'
+            && request.resource.data.viewerDisplayName
+              == getAfter(requestPath(
+                request.resource.data.invitationId, viewerUid
+              )).data.viewerDisplayName
+            && request.resource.data.viewerEmail
+              == getAfter(requestPath(
+                request.resource.data.invitationId, viewerUid
+              )).data.viewerEmail
+            && request.resource.data.relationship
+              == getAfter(requestPath(
+                request.resource.data.invitationId, viewerUid
+              )).data.relationship
+            && request.resource.data.requestedCapabilities
+              == getAfter(requestPath(
+                request.resource.data.invitationId, viewerUid
+              )).data.requestedCapabilities;
+          allow update: if (
+              isOwner(ownerUid)
+              && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+                'status', 'approvedAt', 'rejectedAt'
+              ])
+              && request.resource.data.viewerUid == resource.data.viewerUid
+              && request.resource.data.ownerUid == resource.data.ownerUid
+              && request.resource.data.deviceId == resource.data.deviceId
+              && request.resource.data.invitationId == resource.data.invitationId
+              && request.resource.data.status in ['pending', 'approved', 'rejected']
+            ) || (
+              signedIn()
+              && request.auth.uid == viewerUid
+              && resource.data.viewerUid == viewerUid
+              && resource.data.ownerUid == ownerUid
+              && resource.data.deviceId == deviceId
+              && resource.data.status == 'rejected'
+              && request.resource.data.keys().hasOnly([
+                'viewerUid', 'ownerUid', 'deviceId', 'invitationId',
+                'viewerDisplayName', 'viewerEmail', 'relationship',
+                'requestedCapabilities', 'status', 'requestedAt'
+              ])
+              && request.resource.data.viewerUid == viewerUid
+              && request.resource.data.ownerUid == ownerUid
+              && request.resource.data.deviceId == deviceId
+              && request.resource.data.invitationId is string
+              && request.resource.data.invitationId != resource.data.invitationId
+              && request.resource.data.status == 'pending'
+              && request.resource.data.requestedAt is timestamp
+              && validInvitation(
+                request.resource.data.invitationId,
+                ownerUid,
+                deviceId
+              )
+              && getAfter(requestPath(
+                request.resource.data.invitationId,
+                viewerUid
+              )).data.status == 'pending'
+              && request.resource.data.viewerDisplayName
+                == getAfter(requestPath(
+                  request.resource.data.invitationId, viewerUid
+                )).data.viewerDisplayName
+              && request.resource.data.viewerEmail
+                == getAfter(requestPath(
+                  request.resource.data.invitationId, viewerUid
+                )).data.viewerEmail
+              && request.resource.data.relationship
+                == getAfter(requestPath(
+                  request.resource.data.invitationId, viewerUid
+                )).data.relationship
+              && request.resource.data.requestedCapabilities
+                == getAfter(requestPath(
+                  request.resource.data.invitationId, viewerUid
+                )).data.requestedCapabilities
+            );
+          allow delete: if isOwner(ownerUid);
+        }
+      }
+    }
+
+    match /familyInvitations/{invitationId} {
+      allow get: if signedIn();
+      allow list: if signedIn() && resource.data.ownerUid == request.auth.uid;
+      allow create: if signedIn()
+        && request.auth.uid == request.resource.data.ownerUid
+        && request.resource.data.keys().hasOnly([
+          'ownerUid', 'ownerDisplayName', 'deviceId', 'deviceNickname',
+          'status', 'requestedCapabilities', 'createdAt', 'expiresAt'
+        ])
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.deviceId is string
+        && exists(devicePath(request.auth.uid, request.resource.data.deviceId))
+        && request.resource.data.status == 'open'
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.expiresAt is timestamp
+        && request.resource.data.expiresAt > request.time
+        && request.resource.data.requestedCapabilities is list;
+      allow update: if isOwner(resource.data.ownerUid)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'status', 'updatedAt'
+        ])
+        && request.resource.data.ownerUid == resource.data.ownerUid
+        && request.resource.data.deviceId == resource.data.deviceId
+        && request.resource.data.status in ['open', 'cancelled', 'closed'];
+      allow delete: if isOwner(resource.data.ownerUid);
+
+      match /requests/{viewerUid} {
+        allow read: if signedIn()
+          && (request.auth.uid == viewerUid
+            || (exists(invitationPath(invitationId))
+              && get(invitationPath(invitationId)).data.ownerUid == request.auth.uid));
+        allow create: if signedIn()
+          && request.auth.uid == viewerUid
+          && request.auth.uid != request.resource.data.ownerUid
+          && request.resource.data.keys().hasOnly([
+            'viewerUid', 'ownerUid', 'invitationId', 'viewerDisplayName',
+            'viewerEmail', 'relationship', 'requestedCapabilities',
+            'status', 'requestedAt'
+          ])
+          && request.resource.data.viewerUid == viewerUid
+          && request.resource.data.viewerUid != request.resource.data.ownerUid
+          && request.resource.data.invitationId == invitationId
+          && validInvitation(
+            invitationId,
+            request.resource.data.ownerUid,
+            get(invitationPath(invitationId)).data.deviceId
+          )
+          && request.resource.data.status == 'pending'
+          && request.resource.data.requestedAt is timestamp
+          && request.resource.data.requestedCapabilities
+            == get(invitationPath(invitationId)).data.requestedCapabilities;
+        allow update: if signedIn()
+          && request.resource.data.viewerUid == resource.data.viewerUid
+          && request.resource.data.ownerUid == resource.data.ownerUid
+          && request.resource.data.invitationId == resource.data.invitationId
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            'status', 'approvedAt', 'rejectedAt'
+          ])
+          && (
+            (request.auth.uid == viewerUid
+              && request.resource.data.status == 'pending')
+            || (
+              isOwner(resource.data.ownerUid)
+              && request.resource.data.status in ['pending', 'approved', 'rejected']
+            )
+          );
+        allow delete: if false;
+      }
+    }
+
+    match /helpRequests/{requestId} {
+      allow read: if signedIn()
+        && (
+          resource.data.senderUid == request.auth.uid
+          || resource.data.recipientUid == request.auth.uid
+        );
+      allow create: if signedIn()
+        && request.auth.uid == request.resource.data.senderUid
+        && request.resource.data.requestId == requestId
+        && request.resource.data.keys().hasOnly([
+          'requestId', 'senderUid', 'senderDeviceId', 'recipientUid',
+          'requestedAt', 'language', 'originalMessage', 'originalTranscript',
+          'verifiedDataSnapshot', 'generatedSummary', 'status', 'acknowledgedAt'
+        ])
+        && request.resource.data.senderUid is string
+        && request.resource.data.senderDeviceId is string
+        && request.resource.data.recipientUid is string
+        && request.resource.data.recipientUid != request.resource.data.senderUid
+        && request.resource.data.language in ['bn', 'en', 'bn-en']
+        && request.resource.data.originalMessage is string
+        && request.resource.data.originalTranscript is string
+        && request.resource.data.generatedSummary is string
+        && request.resource.data.verifiedDataSnapshot is map
+        && request.resource.data.status == 'sent'
+        && request.resource.data.requestedAt is timestamp
+        && exists(devicePath(
+          request.resource.data.senderUid,
+          request.resource.data.senderDeviceId
+        ))
+        && get(devicePath(
+          request.resource.data.senderUid,
+          request.resource.data.senderDeviceId
+        )).data.ownerUid == request.resource.data.senderUid
+        && exists(approvedViewerPath(
+          request.resource.data.senderUid,
+          request.resource.data.senderDeviceId,
+          request.resource.data.recipientUid
+        ))
+        && get(approvedViewerPath(
+          request.resource.data.senderUid,
+          request.resource.data.senderDeviceId,
+          request.resource.data.recipientUid
+        )).data.active == true;
+      allow update: if signedIn()
+        && resource.data.recipientUid == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'status', 'acknowledgedAt'
+        ])
+        && request.resource.data.status == 'acknowledged'
+        && request.resource.data.acknowledgedAt is timestamp
+        && request.resource.data.senderUid == resource.data.senderUid
+        && request.resource.data.senderDeviceId == resource.data.senderDeviceId
+        && request.resource.data.recipientUid == resource.data.recipientUid
+        && request.resource.data.requestedAt == resource.data.requestedAt
+        && request.resource.data.originalMessage == resource.data.originalMessage
+        && request.resource.data.originalTranscript == resource.data.originalTranscript
+        && request.resource.data.generatedSummary == resource.data.generatedSummary
+        && request.resource.data.verifiedDataSnapshot == resource.data.verifiedDataSnapshot;
+      allow delete: if false;
+    }
+
+    match /familyViewerAccess/{viewerUid} {
+      allow read: if signedIn() && request.auth.uid == viewerUid;
+      allow write: if false;
+
+      match /grants/{grantId} {
+        allow read: if signedIn() && request.auth.uid == viewerUid;
+        allow create: if signedIn()
+          && request.resource.data.keys().hasOnly([
+            'ownerUid', 'deviceId', 'ownerDisplayName', 'relationship',
+            'grantedAt', 'alias'
+          ])
+          && request.auth.uid == request.resource.data.ownerUid
+          && request.resource.data.ownerUid is string
+          && request.resource.data.deviceId is string
+          && request.resource.data.grantedAt is timestamp
+          && grantId == request.resource.data.ownerUid + '__'
+            + request.resource.data.deviceId
+          && exists(devicePath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId
+          ))
+          && get(devicePath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId
+          )).data.ownerUid == request.resource.data.ownerUid
+          && existsAfter(approvedViewerPath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId,
+            viewerUid
+          ))
+          && getAfter(approvedViewerPath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId,
+            viewerUid
+          )).data.viewerUid == viewerUid
+          && getAfter(approvedViewerPath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId,
+            viewerUid
+          )).data.active == true
+          && getAfter(approvedViewerPath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId,
+            viewerUid
+          )).data.ownerUid == request.resource.data.ownerUid
+          && getAfter(approvedViewerPath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId,
+            viewerUid
+          )).data.deviceId == request.resource.data.deviceId
+          && getAfter(approvedViewerPath(
+            request.resource.data.ownerUid,
+            request.resource.data.deviceId,
+            viewerUid
+          )).data.invitationId is string;
+        allow update: if (
+            signedIn()
+            && request.auth.uid == viewerUid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['alias'])
+            && request.resource.data.alias is string
+          ) || (
+            signedIn()
+            && request.auth.uid == resource.data.ownerUid
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'ownerDisplayName', 'relationship', 'grantedAt'
+            ])
+            && request.resource.data.ownerUid == resource.data.ownerUid
+            && request.resource.data.deviceId == resource.data.deviceId
+            && (
+              !('alias' in resource.data)
+              && !('alias' in request.resource.data)
+              || request.resource.data.alias == resource.data.alias
+            )
+            && request.resource.data.ownerDisplayName is string
+            && request.resource.data.relationship is string
+            && request.resource.data.grantedAt is timestamp
+          );
+        allow delete: if signedIn()
+          && (resource.data.ownerUid == request.auth.uid
+            || request.auth.uid == viewerUid);
+      }
+    }
+  }
+}

@@ -1,0 +1,687 @@
+{
+  "@@locale": "en",
+
+  "appTitle": "AmarGuard",
+
+  "brandTagline": "UNDERSTAND BEFORE YOU TRUST.",
+  "@brandTagline": {
+    "description": "Brand tagline displayed in caps"
+  },
+
+  "loadingDefaultMessage": "Loading...",
+
+  "splashCredit": "by BinaryPulse",
+
+  "onboardingTitle1": "Stay safer in every\ndigital interaction.",
+  "@onboardingTitle1": {
+    "description": "Onboarding page 1 title"
+  },
+  "onboardingSubtitle1": "Detect, understand and respond to risky\ncalls, messages, links and screenshots.",
+  "@onboardingSubtitle1": {
+    "description": "Onboarding page 1 subtitle"
+  },
+
+  "onboardingTitle2": "Scams don't always\nstart with a link.",
+  "@onboardingTitle2": {
+    "description": "Onboarding page 2 title"
+  },
+  "onboardingSubtitle2": "Sometimes, they start with\na conversation.",
+  "@onboardingSubtitle2": {
+    "description": "Onboarding page 2 subtitle"
+  },
+
+  "onboardingTitle3": "Know why something\nfeels risky.",
+  "@onboardingTitle3": {
+    "description": "Onboarding page 3 title"
+  },
+  "onboardingSubtitle3": "AI analyzes the whole interaction\nand explains the risk.",
+  "@onboardingSubtitle3": {
+    "description": "Onboarding page 3 subtitle"
+  },
+
+  "onboardingNext": "Next",
+  "onboardingSkip": "Skip",
+  "onboardingGetStarted": "Get Started",
+
+  "scamBubble1": "You've been selected\nfor a special offer!",
+  "@scamBubble1": {
+    "description": "Sample scam chat bubble 1"
+  },
+  "scamBubble2": "Pay now to confirm.",
+  "scamBubble3": "Don't tell anyone.",
+  "scamBubble4": "Share your OTP.",
+
+  "pipelineStep1Title": "Conversation",
+  "pipelineStep1Subtitle": "Voice to Text",
+  "pipelineStep2Title": "Context Analysis",
+  "pipelineStep2Subtitle": "Find risk signals",
+  "pipelineStep3Title": "AI Risk Detection",
+  "pipelineStep3Subtitle": "XGBoost + SHAP",
+  "pipelineStep4Title": "Clear Explanation",
+  "pipelineStep4Subtitle": "Why is it risky?",
+
+  "loginWelcome": "Welcome Back",
+  "loginSubtitle": "Log in to keep a safer digital life.",
+  "loginEmailHint": "Email Address",
+  "loginPasswordHint": "Password",
+  "loginKeepMe": "Keep me signed in",
+  "loginForgot": "Forgot Password?",
+  "loginButton": "Log In",
+  "loginContinueAs": "or continue as",
+  "loginGuest": "Continue as Guest",
+  "loginNoAccount": "Don't have an account? ",
+  "loginSignUp": "Sign Up",
+
+  "signupTitle": "Create Your\nSafety Account",
+  "signupSubtitle": "Join AmarGuard and stay protected.",
+  "signupNameHint": "Full Name",
+  "signupEmailHint": "Email Address",
+  "signupPhoneHint": "Phone Number",
+  "signupPasswordHint": "Password",
+  "signupConfirmHint": "Confirm Password",
+  "signupAgreePrefix": "I agree to the ",
+  "signupAgreePrivacy": "Privacy Policy",
+  "signupAgreeAnd": " and ",
+  "signupAgreeTerms": "Terms.",
+  "signupAgreeSuffix": "",
+  "signupButton": "Create Account",
+  "signupHaveAccount": "Already have an account? ",
+  "signupLogIn": "Log In",
+
+  "errorEmailRequired": "Please enter your email.",
+  "errorEmailInvalid": "Please enter a valid email address.",
+  "errorPasswordRequired": "Please enter your password.",
+  "errorPasswordShort": "Password must be at least 6 characters.",
+  "errorNameRequired": "Please enter your full name.",
+  "errorPhoneRequired": "Please enter your phone number.",
+  "errorPhoneInvalid": "Please enter a valid phone number.",
+  "errorConfirmRequired": "Please confirm your password.",
+  "errorConfirmMismatch": "Passwords do not match.",
+  "errorAgreeTerms": "Please agree to the Terms to continue.",
+  "errorGeneric": "Something went wrong. Please try again.",
+  "errorInvalidCredentials": "Email or password is incorrect.",
+  "errorAccountDisabled": "This account has been disabled.",
+  "errorTooManyAttempts": "Too many attempts. Please try again later.",
+  "errorNoInternet": "Please check your internet connection and try again.",
+  "errorAccountExists": "An account with this email already exists.",
+  "errorWeakPassword": "Please choose a stronger password.",
+  "errorSignupUnavailable": "Account creation is currently unavailable.",
+
+  "greetingMorning": "Good morning,",
+  "greetingAfternoon": "Good afternoon,",
+  "greetingEvening": "Good evening,",
+  "safetyActive": "Your digital safety is active.",
+  "protectedTitle": "You're Protected",
+  "protectedBody": "AmarGuard is ready to help you check suspicious interactions.",
+
+  "quickActions": "Quick Actions",
+  "familySafetyTitle": "Family Safety",
+  "familySafetySubtitle": "Location, battery & trusted family",
+  "careSignalSubtitle": "Voice assistance & family help",
+  "openFeature": "Open",
+  "seeAll": "See All",
+
+  "serviceAnalyzeCallTitle": "Analyze Call",
+  "serviceAnalyzeCallDesc": "Detect scam & fraud",
+  "serviceCheckMessageTitle": "Check Message",
+  "serviceCheckMessageDesc": "Scan suspicious text",
+  "serviceCheckLinkTitle": "Check Link",
+  "serviceCheckLinkDesc": "Find unsafe websites",
+  "serviceScanScreenshotTitle": "Scan Screenshot",
+  "serviceScanScreenshotDesc": "Identify scams in images",
+  "serviceAnalyzeAudioTitle": "Analyze Audio",
+  "serviceAnalyzeAudioDesc": "Detect voice scams",
+  "serviceFamilySafetyTitle": "Family Safety",
+  "serviceFamilySafetyDesc": "Trusted contacts & safety",
+
+  "stayAlertTitle": "Stay Alert!",
+  "stayAlertBody": "Scams can happen in calls, messages, links and more.",
+
+  "recentActivity": "Recent Activity",
+  "riskHigh": "High Risk",
+  "riskMedium": "Medium Risk",
+  "riskLow": "Low Risk",
+
+  "activityCallTitle": "Unknown Call",
+  "activityScreenshotTitle": "Screenshot Analysis",
+  "activityLinkTitle": "Suspicious Link",
+
+  "navHome": "Home",
+  "navProtect": "Protect",
+  "navAnalyze": "Analyze",
+  "navHistory": "History",
+  "navFamily": "Family",
+  "navCareSignal": "Care Signal",
+  "navProfile": "Profile",
+
+  "protectTitle": "Protect",
+  "protectTagline": "Manage how AmarGuard keeps you safe across every interaction.",
+  "analyzeTitle": "Analyze",
+  "analyzeTagline": "Run a quick safety check on any call, message, link or file.",
+  "historyTitle": "History",
+  "historyTagline": "Review the analyses you have run and what AmarGuard found.",
+  "profileTitle": "Profile",
+  "profileTagline": "Your account and AmarGuard preferences.",
+
+  "profileGuestBadge": "Browsing as guest",
+  "profileActiveProtection": "Active Protection",
+  "profileActiveProtectionGuest": "Limited in guest mode",
+  "profileActiveProtectionUser": "Enabled across your account",
+  "profileActivityHistory": "Activity History",
+  "profileActivityHistorySubtitle": "View recent analysis results",
+  "profileHelp": "Help & Support",
+  "profileHelpSubtitle": "Get answers about AmarGuard",
+  "profileSignOut": "Sign Out",
+  "profileSignedOut": "Signed out",
+
+  "settingsLanguage": "Language",
+  "settingsLanguageEnglish": "English",
+  "settingsLanguageBangla": "বাংলা",
+  "settingsLanguageSubtitle": "Choose your preferred app language",
+
+  "placeholderSoonTitle": "Coming together soon",
+  "placeholderSoonBody": "This section is part of the AmarGuard roadmap and will be enabled once the next release is ready.",
+  "placeholderNotifyTitle": "We'll let you know",
+  "placeholderNotifyBody": "You will see updates here as soon as new protection features become available for your account.",
+
+  "maintenanceTitle": "System Maintenance",
+  "maintenanceBody": "{service} is temporarily unavailable while we complete system maintenance. Please try again later.",
+  "@maintenanceBody": {
+    "placeholders": {
+      "service": {
+        "type": "String"
+      }
+    }
+  },
+  "maintenancePreparing": "We're preparing this feature for a future release.",
+  "maintenanceGotIt": "Got it",
+
+  "snackMenuTitle": "Menu",
+  "snackMenuBody": "The side menu is being prepared for the next AmarGuard release.",
+  "snackNotificationsTitle": "Notifications",
+  "snackNotificationsBody": "You have no new safety alerts right now.",
+
+  "firebaseUnavailableTitle": "Firebase unavailable",
+  "firebaseUnavailableFallback": "AmarGuard could not start. Please try again.",
+
+  "careTitle": "Family Safety",
+  "careTagline": "Stay connected with the people you trust. You stay in control at all times.",
+  "careBack": "Back",
+  "careSharingActive": "Sharing active",
+  "careSharingPaused": "Sharing paused",
+  "careSharingStopped": "Sharing stopped",
+  "careSharingNotConfigured": "Not configured yet",
+  "carePermissionDisabled": "Location permission disabled",
+  "careMyDevice": "My Device",
+  "careDeviceIdentifier": "Device ID",
+  "careCurrentLocationPermission": "Location permission",
+  "careLastSync": "Last successful sync",
+  "careBattery": "Battery",
+  "careStartSharing": "Start Sharing",
+  "carePauseSharing": "Pause Sharing",
+  "careResumeSharing": "Resume Sharing",
+  "careStopSharing": "Stop Sharing",
+  "careConnectedMembers": "Connected Family Members",
+  "careAddMember": "Add Family Member",
+  "careViewMap": "View Family Map",
+  "carePrivacySettings": "Sharing & Privacy",
+  "careNoMembers": "No family members connected yet",
+  "careNoMembersBody": "Create an invitation and ask a trusted family member to connect.",
+  "careMemberFreshness": "Last known location",
+  "careMemberFreshnessFresh": "Recently updated",
+  "careMemberFreshnessStale": "Last Known Location",
+  "careMemberFreshnessUnavailable": "Offline or unavailable",
+  "careMemberFreshnessPaused": "Sharing paused",
+  "careMemberFreshnessNotConnected": "Not connected",
+  "careMemberFreshnessNotConfigured": "Not yet configured",
+  "careMemberFreshnessPermissionDisabled": "Permission disabled",
+  "careLastSeen": "Last seen",
+  "careRelationship": "Relationship",
+  "careBatteryLow": "Battery Low",
+  "careBatteryCritical": "Battery critically low",
+  "careCharging": "Charging",
+  "careNotCharging": "Not charging",
+  "careNever": "Never",
+  "careJustNow": "Just now",
+  "careMinutesAgo": "{count} min ago",
+  "@careMinutesAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careHoursAgo": "{count} h ago",
+  "@careHoursAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careDaysAgo": "{count} d ago",
+  "@careDaysAgo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careFamilyMembersTitle": "Family Members",
+  "careFamilyMembersSubtitle": "People you have approved to view your location",
+  "careAddFamilyMemberTitle": "Add Family Member",
+  "careAddFamilyMemberSubtitle": "Invite someone you trust to see your location",
+  "careGenerateInvitation": "Generate Invitation",
+  "careCopyInvitationLink": "Copy Invitation Link",
+  "careShareInvitation": "Share Invitation",
+  "careEnterInvitationCode": "Enter Invitation Code",
+  "carePendingRequests": "Pending Requests",
+  "careInvitationCodeLabel": "Your invitation code",
+  "careInvitationExpiresIn": "Expires in {hours} h {minutes} min",
+  "@careInvitationExpiresIn": {
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      },
+      "minutes": {
+        "type": "int"
+      }
+    }
+  },
+  "careInvitationExpired": "This invitation has expired.",
+  "careInvitationSafetyNote": "Only share this code with someone you trust. The code itself never grants access to your location.",
+  "careInvitationCodeHint": "Enter the code you received",
+  "careInvitationCodeEmpty": "Please enter an invitation code.",
+  "careInvitationNotFound": "No invitation found for that code.",
+  "careInvitationMalformed": "That invitation code is not valid.",
+  "careInvitationLookupFailed": "The invitation could not be checked right now. Please try again.",
+  "careInvitationCopied": "Invitation code copied.",
+  "careInvitationShared": "Invitation shared.",
+  "careConnectionRequestTitle": "Connection Request",
+  "careRequestedBy": "Requested by",
+  "careIntendedConnection": "Intended connection",
+  "careRequestedCapabilities": "Requested access",
+  "carePrivacyDisclosure": "Privacy disclosure",
+  "carePrivacyDisclosureBody": "Approving this request lets the person view your shared device location, battery level and last update time. You can revoke this access at any time from Sharing & Privacy.",
+  "careApprove": "Approve",
+  "careReject": "Reject",
+  "careRequestApproved": "Request approved.",
+  "careRequestRejected": "Request rejected.",
+  "careJoinFamilyTitle": "Join Family Safety",
+  "careJoinFamilySubtitle": "You have been invited to connect on AmarGuard.",
+  "careAcceptInvitation": "Request Access",
+  "careDeclineInvitation": "Decline",
+  "careInvitationAccepted": "Request sent to the device owner. Location access stays blocked until they approve it.",
+  "careJoinPrivacyDisclosureBody": "Sending this request does not give you location access. The device owner must review and approve it first. You can cancel later from Family Safety.",
+  "careSelfInvitation": "You cannot join using your own invitation. Sign in with a different AmarGuard account.",
+  "careInvitationClosed": "This invitation is no longer open.",
+  "careInvitationInvalid": "This invitation is missing required device information.",
+  "careRequestAlreadyPending": "Your request is waiting for the device owner's approval.",
+  "careRequestAlreadyProcessed": "This invitation request was already processed.",
+  "careInvitationPermissionDenied": "You do not have permission to send this request.",
+  "careApprovalPermissionDenied": "Could not approve this family request. Verify you are signed in as the device owner and try again.",
+  "careSharingStale": "Sharing stale",
+  "careLiveBattery": "Live battery",
+  "careLastSyncedBattery": "Last synced battery",
+  "careWhatYouCanSee": "What you can see",
+  "careCapabilityLocation": "Live location with permission",
+  "careCapabilityBattery": "Battery status",
+  "careCapabilityLastSeen": "Last seen time",
+  "careCapabilityDevice": "Device name",
+  "carePermissionTitle": "Enable Location Sharing",
+  "carePermissionSubtitle": "Review what AmarGuard needs before it can share your location.",
+  "carePermissionServiceOn": "Location service is on",
+  "carePermissionServiceOff": "Location service is off",
+  "carePermissionForeground": "Allow while using the app",
+  "carePermissionBackground": "Background access",
+  "carePermissionBackgroundBody": "Android requires you to allow \"Allow all the time\" in system settings so the app can keep sharing while closed.",
+  "carePermissionBackgroundGranted": "Background access granted",
+  "carePermissionBackgroundDenied": "Background access not granted",
+  "carePermissionPrecision": "Location precision",
+  "carePermissionPrecisionPrecise": "Precise",
+  "carePermissionPrecisionApproximate": "Approximate",
+  "carePermissionNotification": "Foreground notification",
+  "carePermissionNotificationBody": "A persistent notification is shown while sharing is active. It cannot be hidden.",
+  "carePermissionOpenSettings": "Open system settings",
+  "carePermissionGrant": "Grant permission",
+  "carePermissionCancel": "Cancel",
+  "carePermissionContinue": "Continue",
+  "carePermissionGranted": "Location permission granted.",
+  "carePermissionDenied": "Location permission was denied.",
+  "careMapTitle": "Family Map",
+  "careMapRecenter": "Recenter",
+  "careMapZoomIn": "Zoom in",
+  "careMapZoomOut": "Zoom out",
+  "careMapNoMembers": "No approved family locations yet",
+  "careMapNoMembersBody": "Once a family member approves a connection and enables sharing, their location appears here.",
+  "careMapTilesUnavailable": "Map tiles are unavailable. Coordinates are still shown below.",
+  "careMapAttribution": "© OpenStreetMap contributors",
+  "careMapOpenInMaps": "Open in Maps",
+  "careMapCoordinates": "Coordinates",
+  "careMapAccuracy": "Accuracy",
+  "careMapLastUpdate": "Last update",
+  "careMemberDetailsTitle": "Family Member Details",
+  "careDeviceNickname": "Device name",
+  "careCoordinates": "Coordinates",
+  "careCaptureTime": "Location captured",
+  "careSyncTime": "Last synchronized",
+  "careLiveStatus": "Location status",
+  "careOpenInMaps": "Open location in a map app",
+  "careNoLocationYet": "No location received yet",
+  "careNoLocationYetBody": "This member has not shared a location yet. Their last known location will appear here once they enable sharing.",
+  "carePrivacyTitle": "Sharing & Privacy",
+  "carePrivacyWhoCanView": "Who can view my location",
+  "carePrivacyWhoCanViewBody": "Only the family members you explicitly approve can read your shared location.",
+  "carePrivacyActiveSessions": "Active sharing sessions",
+  "carePrivacyDeviceControls": "Device sharing controls",
+  "carePrivacyPermissionSettings": "Permission settings",
+  "carePrivacyInformation": "Privacy information",
+  "carePrivacyInformationBody": "AmarGuard Care never collects location without your consent. Sharing is visible through a persistent Android notification, and you can pause, stop or revoke access at any time.",
+  "careRevokeAccess": "Revoke Access",
+  "careRevokeConfirmTitle": "Revoke access?",
+  "careRevokeConfirmBody": "This family member will no longer be able to read your location. You can approve a new request later.",
+  "careRevokeDone": "Access revoked.",
+  "careStopConfirmTitle": "Stop sharing?",
+  "careStopConfirmBody": "Your location will no longer be collected or sent. Approved members will keep the last location they already received.",
+  "careRemoveInvitation": "Remove invitation",
+  "careRemoveInvitationConfirm": "Remove this invitation?",
+  "careRemoveInvitationBody": "Nobody with this code will be able to request a new connection.",
+  "careCancel": "Cancel",
+  "careConfirm": "Confirm",
+  "careGuestBlockedTitle": "Sign in to use Family Safety",
+  "careGuestBlockedBody": "Guest mode cannot create or approve family connections. Sign in with your AmarGuard account to share your location with trusted family members.",
+  "careSharingStarted": "Location sharing started.",
+  "careSharingPausedMessage": "Location sharing paused.",
+  "careSharingStoppedMessage": "Location sharing stopped.",
+  "careSharingStartFailed": "Could not start sharing. Check location permission and GPS.",
+  "careLowBatteryAlert": "{name} has low battery ({percent}%)",
+  "@careLowBatteryAlert": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "careCriticalBatteryAlert": "{name} battery is critically low ({percent}%)",
+  "@careCriticalBatteryAlert": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      },
+      "percent": {
+        "type": "int"
+      }
+    }
+  },
+  "careGpsOff": "GPS is turned off on this device.",
+  "careRenameDevice": "Rename device",
+  "careRenameDeviceHint": "Device name",
+  "careSave": "Save",
+  "careRelationshipParent": "Parent",
+  "careRelationshipChild": "Child",
+  "careRelationshipSpouse": "Spouse",
+  "careRelationshipSibling": "Sibling",
+  "careRelationshipGuardian": "Guardian",
+  "careRelationshipCaregiver": "Caregiver",
+  "careRelationshipFriend": "Friend",
+  "careRelationshipOther": "Other",
+  "careInvitationOwner": "Invited by {name}",
+  "@careInvitationOwner": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "careRequestStatusPending": "Pending",
+  "careRequestStatusApproved": "Approved",
+  "careRequestStatusRejected": "Rejected",
+  "careWatchedBy": "You can view {count} family member",
+  "@careWatchedBy": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careWatchedByPlural": "You can view {count} family members",
+  "@careWatchedByPlural": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careSharingTo": "Sharing with {count} approved member",
+  "@careSharingTo": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careSharingToPlural": "Sharing with {count} approved members",
+  "@careSharingToPlural": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "careLocationSharing": "Location sharing",
+  "careLoading": "Loading...",
+  "careRetry": "Retry",
+  "careOpenSettings": "Open settings",
+  "careMemberSince": "Connected since {date}",
+  "@careMemberSince": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "careSignalTitle": "Care Signal",
+  "careSignalTagline": "Voice to understand, confirm, then reach your family.",
+  "careSignalNeedHelp": "Need Help",
+  "careSignalNeedHelpSubtitle": "Speak your request. Care Signal AI will prepare a verified help summary for you to review.",
+  "careSignalPrivacyNote": "Your recording is processed by Meta AI only after you give permission. Nothing is shared with your family until you confirm.",
+  "careSignalRecordingTitle": "Recording your request",
+  "careSignalRecordingHint": "Tap the microphone and speak clearly in Bengali or English.",
+  "careSignalConsentTitle": "Allow Meta AI to process this recording?",
+  "careSignalConsentBody": "The recording will be sent securely to Meta Voice Transcribe to turn your speech into text. The audio is not stored after transcription.",
+  "careSignalConsentAllow": "Allow and start recording",
+  "careSignalConsentDeny": "Not now",
+  "careSignalStopRecording": "Stop",
+  "careSignalCancel": "Cancel",
+  "careSignalMicDenied": "Microphone permission was denied. Enable it in Android settings to record a request.",
+  "careSignalEmptyRecording": "No speech was captured. Please record again.",
+  "careSignalTranscribing": "Transcribing your voice",
+  "careSignalTranscribingBody": "Meta Voice Transcribe is turning your speech into text.",
+  "careSignalTranscriptTitle": "Check your words",
+  "careSignalTranscriptHint": "Correct any mistakes before continuing.",
+  "careSignalTranscriptLabel": "Your request",
+  "careSignalEditTranscript": "Edit transcript",
+  "careSignalContinue": "Continue",
+  "careSignalProcessing": "Care Signal AI is thinking",
+  "careSignalProcessingBody": "Reading your request and loading only the family data you already approved.",
+  "careSignalStepUnderstand": "Understanding your request",
+  "careSignalStepContacts": "Checking approved family contacts",
+  "careSignalStepLocation": "Fetching authorized location status",
+  "careSignalStepBattery": "Checking battery status",
+  "careSignalStepSummary": "Preparing the help summary",
+  "careSignalSummaryTitle": "Help summary",
+  "careSignalSummaryBody": "Review everything below before it is sent to your family.",
+  "careSignalOriginalStatement": "Your original statement",
+  "careSignalAiInterpretation": "AI assistance summary",
+  "careSignalLastKnownLocation": "Last known location",
+  "careSignalLocationUnavailable": "No authorized location is available right now.",
+  "careSignalLocationFresh": "Recently updated",
+  "careSignalLocationStale": "Older location",
+  "careSignalLocationPaused": "Location sharing is paused",
+  "careSignalLocationSharingDisabled": "Location sharing is turned off",
+  "careSignalBatteryInfo": "Last reported battery",
+  "careSignalBatteryUnavailable": "Battery information is not available.",
+  "careSignalSuggestedActions": "Suggested safe actions",
+  "careSignalRecipients": "Who should be notified",
+  "careSignalNoRecipients": "No approved family member is available to receive help requests yet.",
+  "careSignalNoRecipientsBody": "On the location owner's phone, open Family Safety, approve the pending request, and keep the family connection active. This request cannot be sent until that approval is verified.",
+  "careSignalConfirmSendTitle": "Send this help request?",
+  "careSignalConfirmSendBody": "Your family member will see your message, the AI summary, and the verified information listed here.",
+  "careSignalSendNow": "Send now",
+  "careSignalSending": "Sending",
+  "careSignalSentTitle": "Help request saved",
+  "careSignalSentBody": "The request was saved. This does not confirm that the receiver has seen it.",
+  "careSignalSavedFor": "Request saved for {name}. It remains available in their incoming requests if push notification is missed.",
+  "@careSignalSavedFor": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "careSignalNotificationSubmitted": "FCM accepted the notification submission; this does not confirm delivery.",
+  "careSignalNotificationNotSubmitted": "Notification was not submitted. The saved request remains available in the inbox.",
+  "careSignalReceiverAcknowledged": "The receiver acknowledged the request.",
+  "careSignalApprovedRecipient": "Approved",
+  "careSignalSuggestedMatch": "Suggested from your request; please confirm",
+  "careSignalStatusNew": "New",
+  "careSignalStatusSaved": "Saved",
+  "careSignalStatusNotificationSubmitted": "FCM accepted",
+  "careSignalInboxTitle": "Family Help Inbox",
+  "careSignalInboxEmpty": "No help requests yet.",
+  "careSignalInboxEmptyBody": "When a family member asks for help, it will appear here.",
+  "careSignalRequestFrom": "From {name}",
+  "@careSignalRequestFrom": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "careSignalCallMember": "Call family member",
+  "careSignalViewLocation": "View last known location",
+  "careSignalAcknowledge": "Acknowledge help",
+  "careSignalAcknowledged": "Request acknowledged",
+  "careSignalAcknowledgedBody": "The requester has been notified that you received their request.",
+  "careSignalStatusSent": "Sent",
+  "careSignalStatusAcknowledged": "Acknowledged",
+  "careSignalStatusPending": "Pending",
+  "safetyInboxTitle": "Safety Inbox",
+  "safetyInboxSubtitle": "Family help requests and access approvals in one place.",
+  "safetyInboxEmptyTitle": "You're all caught up",
+  "safetyInboxEmptyBody": "New help requests and family access approvals will appear here.",
+  "safetyInboxCareSignal": "CareSignal Help Request",
+  "safetyInboxFamilyAccess": "Family Access Request",
+  "safetyInboxSourceCareSignal": "Source: CareSignal",
+  "safetyInboxSourceFamilySafety": "Source: Family Safety",
+  "safetyInboxUnread": "Unread",
+  "safetyInboxRead": "Read",
+  "safetyInboxAcknowledged": "Acknowledged",
+  "safetyInboxAwaitingResponse": "Awaiting response",
+  "safetyInboxPendingApproval": "Pending approval",
+  "safetyInboxStatusLabel": "Status",
+  "safetyInboxCareSignalError": "CareSignal requests couldn't be loaded.",
+  "safetyInboxFamilyError": "Family access requests couldn't be loaded.",
+  "safetyInboxSignInPrompt": "Sign in to view your safety requests.",
+  "careSignalResponseTitle": "Help request details",
+  "careSignalCreatedAt": "Created at {date}",
+  "@careSignalCreatedAt": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "careSignalNotAvailable": "Not available",
+  "careSignalBackToInbox": "Back to inbox",
+  "careSignalFailed": "Something went wrong",
+  "careSignalTryAgain": "Try again",
+  "careSignalLoadingData": "Loading authorized data",
+  "careSignalAwaitingConfirmation": "Awaiting your confirmation",
+  "careSignalCancelled": "Cancelled",
+  "careSignalRetry": "Start over",
+  "careSignalSentRequests": "My sent requests",
+  "careSignalSentRequestsEmpty": "You have not sent any help request yet.",
+  "careSignalSentRequestsEmptyBody": "When you ask for help, the request and its status will be listed here.",
+  "careSignalConfirm": "OK",
+  "careSignalRequestTypeLost": "Lost",
+  "careSignalRequestTypeEmergency": "Urgent",
+  "careSignalRequestTypeCheckIn": "Check-in",
+  "careSignalRequestTypeGeneral": "General request",
+  "careSignalRequestTypeUnknown": "Request",
+  "careSignalSenderLabel": "Requested by",
+  "careSignalSentByYou": "You sent this request",
+  "careSignalRecipientLabel": "Notified",
+  "careSignalRequestTypeLabel": "Type of request",
+  "careSignalNoPhoneNumber": "No phone number is shared for this request.",
+  "careSignalFamilyMember": "Family member",
+  "silentSpeakTitle": "Silent Speak",
+  "silentSpeakSubtitle": "Communicate and ask for help without communication barriers.",
+  "silentSpeakModeTitle": "How would you like to communicate?",
+  "silentSpeakModeHint": "Choose one mode. You can change it at any time.",
+  "silentSpeakSpeakMode": "I Cannot Speak",
+  "silentSpeakSpeakDescription": "Express needs using pictures and large messages.",
+  "silentSpeakListenMode": "I Cannot Hear",
+  "silentSpeakListenDescription": "Read what another person says.",
+  "silentSpeakRememberMode": "Remember my preferred mode on this device",
+  "silentSpeakSpeakTitle": "Speak for Me",
+  "silentSpeakSpeakHint": "Choose one or more picture cards to build a simple message.",
+  "silentSpeakIntentLost": "I am lost",
+  "silentSpeakIntentUnwell": "I feel unwell",
+  "silentSpeakIntentWater": "I need water",
+  "silentSpeakIntentHelp": "I need help",
+  "silentSpeakIntentFamily": "Contact my family",
+  "silentSpeakIntentHome": "I want to go home",
+  "silentSpeakSelectPrompt": "Choose a message card to begin.",
+  "silentSpeakShowMessage": "Show message",
+  "silentSpeakAskFamily": "Ask Family for Help",
+  "silentSpeakMessageTitle": "Show this message",
+  "silentSpeakMessageHint": "Show your screen to the other person.",
+  "silentSpeakCopy": "Copy message",
+  "silentSpeakCopied": "Message copied",
+  "silentSpeakReadAloudDisabled": "Read aloud is unavailable on this device.",
+  "silentSpeakListenTitle": "Listen & Understand",
+  "silentSpeakListenHint": "Record only when you tap Start Listening. The original transcript stays on this device unless you choose to share a separate help message.",
+  "silentSpeakStartListening": "Start Listening",
+  "silentSpeakStopRecording": "Stop recording",
+  "silentSpeakMicrophoneActive": "Microphone active",
+  "silentSpeakTranscriptTitle": "What the other person said",
+  "silentSpeakTranscriptEmpty": "Your transcript will appear here. You can also type it.",
+  "silentSpeakTypeMessage": "Please type the message",
+  "silentSpeakTypeHint": "Ask the other person to type what they said.",
+  "silentSpeakSpeakerPrompt": "I cannot hear. Please type your message.",
+  "silentSpeakShowSpeakerPrompt": "Show this to the speaker",
+  "silentSpeakMyResponse": "My response",
+  "silentSpeakResponseHint": "Type a reply, or speak naturally.",
+  "silentSpeakTryAgain": "Repeat / Try Again",
+  "silentSpeakPrivacyTitle": "Before recording",
+  "silentSpeakPrivacyBody": "With your permission, this short recording is sent securely to Meta Voice Transcribe. It is not saved to your family account. You can choose typing instead.",
+  "silentSpeakFamilyTitle": "Ask your family for help",
+  "silentSpeakFamilyHint": "Write only what you want to share. Your conversation transcript and recording will not be sent.",
+  "silentSpeakFamilyMessageLabel": "Message to your family",
+  "silentSpeakFamilyMessageHint": "Enter a short message",
+  "silentSpeakFamilyPreview": "Review request",
+  "silentSpeakFamilyRecipients": "Choose an approved family member",
+  "silentSpeakFamilyLoading": "Checking approved family members",
+  "silentSpeakFamilyNoRecipients": "No approved family members are available for help requests.",
+  "silentSpeakFamilySignIn": "Sign in to ask family for help.",
+  "silentSpeakFamilyPrivacy": "Only your confirmed message and chosen recipient will be sent. Location and audio are not attached.",
+  "silentSpeakFamilyConfirmTitle": "Send this message?",
+  "silentSpeakFamilyConfirmBody": "Review the recipient and exact message. Nothing is sent until you confirm.",
+  "silentSpeakFamilySend": "Confirm and send",
+  "silentSpeakFamilySending": "Saving request",
+  "silentSpeakFamilySaved": "Request saved on the server.",
+  "silentSpeakFamilyAcknowledged": "Your family member acknowledged the request.",
+  "silentSpeakFamilyNotificationSubmitted": "The notification service accepted the request; this does not confirm delivery or that it was seen.",
+  "silentSpeakFamilyNotificationFailed": "The request is saved, but notification was not accepted. Your family member can still find it in their inbox.",
+  "silentSpeakFamilyRequestFailed": "The request could not be saved. Check your connection and try again.",
+  "silentSpeakApiUnavailable": "Online transcription is unavailable. You can type the message instead.",
+  "silentSpeakAudioUnsupported": "This device cannot record the required audio format. Please type the message instead.",
+  "silentSpeakNoSpeech": "No speech was detected. Try again or type the message.",
+  "silentSpeakEnterMessage": "Enter a short message before continuing.",
+  "silentSpeakBack": "Back",
+  "silentSpeakChangeMode": "Change mode"
+}

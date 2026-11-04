@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AmarGuard</string>
+    <string name="sharing_channel_name">AmarGuard Family Safety</string>
+    <string name="sharing_channel_description">Shown while your location is shared with approved family members.</string>
+    <string name="sharing_notification_title">AmarGuard Family Safety</string>
+    <string name="sharing_notification_body">Your location is being shared with approved family members.</string>
+</resources>
